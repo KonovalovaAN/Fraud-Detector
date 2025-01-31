@@ -2,8 +2,8 @@ package com.workspace;
 
 public class Trader {
 
-    private String fullName;
-    private String city;
+    private final String fullName;
+    private final String city;
 
     public String getCountry() {
         return country;

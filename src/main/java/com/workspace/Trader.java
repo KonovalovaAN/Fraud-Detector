@@ -4,12 +4,11 @@ public class Trader {
 
     private final String fullName;
     private final String city;
+    private final String country;
 
     public String getCountry() {
         return country;
     }
-
-    private String country;
 
     public String getFullName() {
         return fullName;

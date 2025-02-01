@@ -13,14 +13,20 @@ class FraudDetector {
     );
 
     FraudDetectionResult isFraud(Transaction transaction) {
-        for (FraudRule fraudRule : fraudRules) {
-            if (fraudRule.isFraud(transaction)) {
-                String ruleName = fraudRule.getRuleName();
-                return new FraudDetectionResult(true, ruleName);
-            }
-        }
+        return fraudRules.stream()
+                .filter(fraudRule -> fraudRule.isFraud(transaction))
+                .findFirst()
+                .map(this::buildFraudResult)
+                .orElse(buildNotFraudResult());
+    }
 
+    private FraudDetectionResult buildNotFraudResult() {
         return new FraudDetectionResult(false, null);
     }
 
+    private FraudDetectionResult buildFraudResult(FraudRule fraudRule) {
+        return new FraudDetectionResult(true, fraudRule.getRuleName());
+    }
+
+}
 }

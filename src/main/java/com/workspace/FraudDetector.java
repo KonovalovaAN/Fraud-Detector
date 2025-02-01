@@ -1,38 +1,19 @@
 package com.workspace;
 
-public class FraudDetector {
+class FraudDetector {
 
-    public boolean isFraud(Transaction transaction) {
-        return isFraudByRule1(transaction)
-                || isFraudByRule2(transaction)
-                || isFraudByRule3(transaction)
-                || isFraudByRule4(transaction)
-                || isFraudByRule5(transaction);
-    }
+    private FraudRule rule1 = new FraudRule1();
+    private FraudRule rule2 = new FraudRule2();
+    private FraudRule rule3 = new FraudRule3();
+    private FraudRule rule4 = new FraudRule4();
+    private FraudRule rule5 = new FraudRule5();
 
-    private boolean isFraudByRule1(Transaction transaction) {
-        Trader trader = transaction.getTrader();
-        return trader.getFullName().equals("Pokemon");
-    }
-
-    private boolean isFraudByRule2(Transaction transaction) {
-        return transaction.getAmount() > 1000000;
-    }
-
-    private boolean isFraudByRule3(Transaction transaction) {
-        Trader trader = transaction.getTrader();
-        return trader.getCity().equals("Sydney");
-    }
-
-    private boolean isFraudByRule4(Transaction transaction) {
-        Trader trader = transaction.getTrader();
-        return trader.getCountry().equals("Jamaica");
-    }
-
-    private boolean isFraudByRule5(Transaction transaction) {
-        Trader trader = transaction.getTrader();
-        return trader.getCountry().equals("Germany")
-                && transaction.getAmount() > 1000;
+    boolean isFraud(Transaction transaction) {
+        return rule1.isFraud(transaction)
+                || rule2.isFraud(transaction)
+                || rule3.isFraud(transaction)
+                || rule4.isFraud(transaction)
+                || rule5.isFraud(transaction);
     }
 
 }

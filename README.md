@@ -1,5 +1,6 @@
-#Fraud-Detector project
+# Fraud-Detector project
 
-Практическая направленность:
+# Практическая направленность:
+## Изучить:
 * Single Responsibility Principle
 * JUnit
